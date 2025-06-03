@@ -1,11 +1,15 @@
+/* src/index.css */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* A cor do texto principal e o fundo do body são definidos em App.css,
+     portanto, as linhas abaixo podem ser comentadas ou removidas de :root
+     se o App.css estiver aplicando-as diretamente ao body. */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,15 +28,17 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* REMOVIDO: display: flex; */
+  /* REMOVIDO: place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  /* As propriedades background-color e color para o body são aplicadas
+     pelo App.css (background-color: #e8f5e9; color: #333;) */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2em; /* Este é um estilo global padrão do Vite para h1 */
+  line-height: 1.1; /* Pode ser sobrescrito por estilos mais específicos nos componentes */
 }
 
 button {
@@ -42,7 +48,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* Estilo padrão Vite para botões no tema escuro */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -56,13 +62,13 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* color: #213547; */ /* Sobrescrito por App.css */
+    /* background-color: #ffffff; */ /* Sobrescrito por App.css */
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Estilo padrão Vite para botões no tema claro */
   }
 }
