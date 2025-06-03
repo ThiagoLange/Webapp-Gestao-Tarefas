@@ -1,0 +1,96 @@
+/* src/components/Tarefas.module.css */
+
+.tarefasContainer {
+  max-width: 960px; /* Defina uma largura máxima para o seu conteúdo. Pode ser 960px, 1140px, 1200px, etc., conforme sua preferência. */
+  margin-left: auto; /* Essas duas propriedades centralizam o bloco */
+  margin-right: auto;
+  padding: 20px; /* Mantém o espaçamento interno */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e8f5e9; /* Fundo verde muito claro para a página toda */
+  min-height: 100vh; /* Para ocupar a tela toda verticalmente */
+  box-sizing: border-box; /* Garante que padding e border não aumentem a largura total além do max-width */
+}
+
+.mainTitle {
+  color: #1b5e20; /* Verde bem escuro para o título principal */
+  text-align: center; /* Título já estava centralizado, o que é bom */
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.sectionTitle {
+  color: #2e7d32; /* Verde escuro para títulos de seção */
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #66bb6a; /* Linha abaixo do título em verde médio */
+  padding-bottom: 5px;
+  font-size: 1.8em;
+  /* Se quiser que os títulos de seção também fiquem centralizados, descomente a linha abaixo */
+  /* text-align: center; */
+}
+
+.noTasksMessage {
+  color: #555;
+  font-style: italic;
+  text-align: center; /* Mensagem já estava centralizada */
+  padding: 20px;
+  background-color: #f1f8e9; /* Fundo levemente esverdeado para a mensagem */
+  border-radius: 6px;
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+}
+
+.taskItem {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 5px solid #4CAF50; /* Destaque verde na lateral (mesmo verde do botão) */
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.taskItem:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.taskDescription {
+  font-weight: bold;
+  color: #333; /* Cor escura para boa legibilidade do texto da tarefa */
+}
+
+.taskPeriod {
+  font-size: 0.9em;
+  color: #00796b; /* Texto em tom verde-azulado/teal para o período */
+  background-color: #e0f2f1; /* Fundo suave (quase um verde-azulado pálido) para o período */
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 10px; /* Espaçamento em relação à descrição */
+}
+
+.taskStatus {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.taskStatusPending {
+  color: #ef6c00; /* Laranja para pendente, para contraste claro */
+}
+
+.taskStatusCompleted {
+  color: #388e3c; /* Verde para concluída */
+  text-decoration: line-through; /* Linha através para indicar conclusão */
+}
+
+.taskItemText { /* Container para agrupar descrição e período */
+  flex-grow: 1; /* Permite que este grupo ocupe o espaço disponível */
+  display: flex; /* Alinha descrição e período na mesma linha se houver espaço */
+  align-items: center; /* Centraliza verticalmente descrição e período */
+  flex-wrap: wrap; /* Permite que quebrem linha em telas menores */
+}
