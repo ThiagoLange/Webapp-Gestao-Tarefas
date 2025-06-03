@@ -1,13 +1,23 @@
 // src/components/Tarefas.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import NovaTarefaForm from './NovaTarefaForm';
-import PercentualConclusao from './PercentualConclusao'; // Importa o novo componente
+import PercentualConclusao from './PercentualConclusao';
 import styles from './Tarefas.module.css';
 
 function Tarefas() {
-  const [tarefas, setTarefas] = useState([
+  const [tarefas, setTarefas] = useState(() => {
+    // Load tasks from localStorage on initial state
+    const tarefasSalvas = localStorage.getItem('tarefas');
+    if (tarefasSalvas) {
+      return JSON.parse(tarefasSalvas);
+    }
+    return [];
+  });
 
-  ]);
+  // Save tasks to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }, [tarefas]);
 
   const adicionarNovaTarefa = (novaTarefa) => {
     const tarefaComId = {
@@ -70,19 +80,15 @@ function Tarefas() {
       <h1 className={styles.mainTitle}>Gestão de Tarefas Diárias 📝</h1>
       <NovaTarefaForm onAdicionarTarefa={adicionarNovaTarefa} />
 
-      {/* Substitui o contador anterior pelo novo componente PercentualConclusao */}
-      {tarefas.length >= 0 && ( // Sempre mostrar, mesmo que 0 tarefas, para exibir 0%
-        <PercentualConclusao
-          tarefasCompletas={concluidasCount}
-          totalTarefas={tarefas.length}
-        />
-      )}
+      <PercentualConclusao
+        tarefasCompletas={concluidasCount}
+        totalTarefas={tarefas.length}
+      />
 
       <h2 className={styles.sectionTitleTarefas}>Minhas Tarefas:</h2>
-      {tarefas.length === 0 && ! (tarefas.length > 0) ? ( // Condição ajustada para mostrar mensagem apenas se não houver tarefas
+      {tarefas.length === 0 ? ( // Condição ajustada para mostrar mensagem apenas se não houver tarefas
         <p className={styles.noTasksMessage}>Nenhuma tarefa adicionada ainda. Adicione uma acima! ☝️</p>
       ) : (
-        tarefas.length > 0 && // Garante que as colunas só apareçam se houver tarefas
         <div className={styles.columnsContainer}>
           <div className={styles.taskColumn}>
             <h3 className={styles.columnHeaderManha}>Manhã 🌅</h3>

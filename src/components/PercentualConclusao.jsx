@@ -28,8 +28,7 @@ function PercentualConclusao({ tarefasCompletas, totalTarefas }) {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          {/* Opcional: mostrar a porcentagem dentro da barra se houver espaço */}
-          {/* {progresso.toFixed(0)}% */}
+       
         </div>
       </div>
     </div>
