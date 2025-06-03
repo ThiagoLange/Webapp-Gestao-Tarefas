@@ -1,12 +1,10 @@
 /* src/components/Tarefas.module.css */
-/* Estilos anteriores para .tarefasContainer, .mainTitle, etc. permanecem os mesmos */
-/* ... (estilos anteriores omitidos para brevidade, mas devem estar aqui) ... */
 
 .tarefasContainer {
-  max-width: 1100px; /* Aumentado para acomodar melhor 3 colunas */
+  max-width: 1100px; 
   margin-left: auto;
   margin-right: auto;
-  padding: 20px 30px; /* Ajuste de padding */
+  padding: 20px 30px; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #e8f5e9;
   min-height: 100vh;
@@ -20,27 +18,25 @@
   font-size: 2.5em;
 }
 
-/* Título da seção de listagem de tarefas */
 .sectionTitleTarefas {
   color: #2e7d32;
-  margin-top: 40px; /* Mais espaço acima */
+  margin-top: 40px; 
   margin-bottom: 20px;
   font-size: 1.8em;
-  text-align: center; /* Centralizar o título "Minhas Tarefas" */
+  text-align: center; 
 }
 
 .noTasksMessage {
   color: #555;
   font-style: italic;
   text-align: center;
-  padding: 30px 20px; /* Mais padding */
+  padding: 30px 20px; 
   background-color: #f1f8e9;
   border-radius: 6px;
   margin-top: 20px;
   font-size: 1.1em;
 }
 
-/* Contador de Tarefas Concluídas */
 .completedCountContainer {
   text-align: center;
   margin: 25px 0;
@@ -48,32 +44,30 @@
 
 .completedCountText {
   font-size: 1.2em;
-  color: #388e3c; /* Verde médio */
+  color: #388e3c; 
   font-weight: bold;
-  background-color: #f0f9f0; /* Fundo verde bem claro */
+  background-color: #f0f9f0; 
   padding: 10px 15px;
-  border-radius: 20px; /* Bordas arredondadas */
-  display: inline-block; /* Para o padding e background funcionarem bem */
+  border-radius: 20px; 
+  display: inline-block; 
   border: 1px solid #a3d9a5;
 }
 
-
-/* Container para as colunas */
 .columnsContainer {
   display: flex;
   justify-content: space-between;
-  gap: 25px; /* Espaço entre as colunas */
+  gap: 25px; 
   margin-top: 20px;
-  flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+  flex-wrap: wrap; 
 }
 
 .taskColumn {
-  flex: 1; /* Cada coluna tenta ocupar o mesmo espaço */
-  min-width: 280px; /* Largura mínima para cada coluna antes de quebrar */
-  background-color: #fafffa; /* Fundo muito sutil para cada coluna */
+  flex: 1; 
+  min-width: 280px; 
+  background-color: #fafffa; 
   padding: 15px;
   border-radius: 8px;
-  border: 1px solid #d0e0d0; /* Borda suave */
+  border: 1px solid #d0e0d0; 
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
@@ -89,17 +83,17 @@
 }
 
 .columnHeaderManha {
-  color: #0277bd; /* Azul para Manhã */
+  color: #0277bd; 
   border-bottom-color: #b3e5fc;
 }
 
 .columnHeaderTarde {
-  color: #ef6c00; /* Laranja para Tarde */
+  color: #ef6c00; 
   border-bottom-color: #ffe0b2;
 }
 
 .columnHeaderNoite {
-  color: #5e35b1; /* Roxo para Noite */
+  color: #5e35b1; 
   border-bottom-color: #d1c4e9;
 }
 
@@ -110,65 +104,63 @@
   padding: 20px 0;
 }
 
-.taskListPeriod { /* Lista de tarefas dentro de cada período */
+.taskListPeriod { 
   list-style: none;
   padding: 0;
 }
 
-/* Estilos para os itens da tarefa (.taskItem, etc.) podem ser ajustados se necessário,
-   mas os existentes já devem funcionar bem. Adicionei uma variação para item concluído. */
-
 .taskItem {
   background-color: #ffffff;
-  padding: 12px 15px; /* Padding ajustado */
+  padding: 12px 15px; 
   margin-bottom: 10px;
-  border-left: 5px solid #66bb6a; /* Verde médio para a borda esquerda padrão */
+  border-left: 5px solid #66bb6a; 
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: box-shadow 0.2s ease, border-left-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-left-color 0.2s ease, background-color 0.2s ease;
 }
 
 .taskItem:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.12);
 }
 
-/* Estilo específico para tarefa concluída */
 .taskItemCompleted {
-  border-left-color: #388e3c; /* Verde escuro para tarefas concluídas */
-  background-color: #f1f8e9; /* Fundo levemente esverdeado para destacar */
+  border-left-color: #388e3c; 
+  background-color: #f5f5f5; /* Fundo levemente acinzentado para destacar sutilmente */
 }
 
-.taskItemCompleted .taskDescription {
-  text-decoration: line-through;
-  color: #555;
+.taskItemContent { /* Novo: para alinhar checkbox e descrição */
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.taskCheckbox {
+  margin-right: 12px; /* Espaço entre checkbox e descrição */
+  /* Aumenta o tamanho do checkbox se necessário (pode requerer estilização mais complexa para cross-browser) */
+  transform: scale(1.2); 
+  cursor: pointer;
 }
 
 .taskDescription {
-  font-weight: 500; /* Um pouco menos bold */
+  font-weight: 500; 
   color: #333;
-  flex-grow: 1; /* Para ocupar o espaço disponível */
+  transition: color 0.2s ease, text-decoration 0.2s ease; /* Para suavizar a mudança */
 }
 
-.taskPeriod {
-  /* O período não é mais exibido individualmente no item da lista,
-     pois agora está implícito pela coluna.
-     Mas caso precise no futuro, o estilo está aqui. */
-  font-size: 0.9em;
-  color: #00796b;
-  background-color: #e0f2f1;
-  padding: 3px 8px;
-  border-radius: 10px;
-  margin-left: 10px;
+/* Estilo para a descrição da tarefa quando concluída */
+.taskItemCompleted .taskDescription {
+  text-decoration: line-through;
+  color: #aaaaaa; /* Cinza claro para o texto da tarefa concluída */
 }
 
 .taskStatus {
   font-size: 0.9em;
   font-weight: bold;
-  white-space: nowrap; /* Evita que o status quebre linha */
-  margin-left: 10px; /* Espaço entre texto e status */
+  white-space: nowrap; 
+  margin-left: 10px; 
 }
 
 .taskStatusPending {
@@ -176,12 +168,5 @@
 }
 
 .taskStatusCompleted {
-  color: #388e3c;
-}
-
-.taskItemText {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  color: #388e3c; 
 }

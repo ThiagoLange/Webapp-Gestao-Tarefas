@@ -9,9 +9,6 @@ function Tarefas() {
     // { id: 1, descricao: 'Café da Manhã Reforçado', periodo: 'Manhã', concluida: true },
     // { id: 2, descricao: 'Reunião de Alinhamento', periodo: 'Manhã', concluida: false },
     // { id: 3, descricao: 'Almoço com Cliente', periodo: 'Tarde', concluida: false },
-    // { id: 4, descricao: 'Finalizar Relatório XYZ', periodo: 'Tarde', concluida: true },
-    // { id: 5, descricao: 'Academia', periodo: 'Noite', concluida: false },
-    // { id: 6, descricao: 'Ler 1 capítulo do livro', periodo: 'Noite', concluida: false },
   ]);
 
   const adicionarNovaTarefa = (novaTarefa) => {
@@ -23,10 +20,13 @@ function Tarefas() {
     setTarefas((tarefasAnteriores) => [...tarefasAnteriores, tarefaComId]);
   };
 
-  // Lógica para marcar tarefa como concluída (será adicionada futuramente)
-  // const toggleConcluida = (id) => {
-  //   setTarefas(tarefas.map(t => t.id === id ? { ...t, concluida: !t.concluida } : t));
-  // };
+  const toggleConcluida = (id) => {
+    setTarefas(
+      tarefas.map((tarefa) =>
+        tarefa.id === id ? { ...tarefa, concluida: !tarefa.concluida } : tarefa
+      )
+    );
+  };
 
   const tarefasManha = tarefas.filter(t => t.periodo === 'Manhã');
   const tarefasTarde = tarefas.filter(t => t.periodo === 'Tarde');
@@ -41,15 +41,24 @@ function Tarefas() {
     return (
       <ul className={styles.taskListPeriod}>
         {listaTarefas.map((tarefa) => (
-          <li key={tarefa.id} className={`${styles.taskItem} ${tarefa.concluida ? styles.taskItemCompleted : ''}`}>
-            <div className={styles.taskItemText}>
+          <li 
+            key={tarefa.id} 
+            className={`${styles.taskItem} ${tarefa.concluida ? styles.taskItemCompleted : ''}`}
+          >
+            <div className={styles.taskItemContent}> {/* Novo wrapper para checkbox e texto */}
+              <input
+                type="checkbox"
+                checked={tarefa.concluida}
+                onChange={() => toggleConcluida(tarefa.id)}
+                className={styles.taskCheckbox}
+              />
               <span className={styles.taskDescription}>
-                {/* Adicionar checkbox para marcar como concluída futuramente */}
-                {/* <input type="checkbox" checked={tarefa.concluida} onChange={() => toggleConcluida(tarefa.id)} style={{ marginRight: '10px' }} /> */}
                 {tarefa.descricao}
               </span>
             </div>
-            <span className={`${styles.taskStatus} ${tarefa.concluida ? styles.taskStatusCompleted : styles.taskStatusPending}`}>
+            <span 
+              className={`${styles.taskStatus} ${tarefa.concluida ? styles.taskStatusCompleted : styles.taskStatusPending}`}
+            >
               {tarefa.concluida ? 'Concluída ✅' : 'Pendente ⏳'}
             </span>
           </li>
