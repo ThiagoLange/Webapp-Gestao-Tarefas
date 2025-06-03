@@ -20,7 +20,7 @@
 
 .sectionTitleTarefas {
   color: #2e7d32;
-  margin-top: 40px; 
+  margin-top: 20px; /* Reduzido um pouco o espaço, pois o progresso já tem margem */
   margin-bottom: 20px;
   font-size: 1.8em;
   text-align: center; 
@@ -35,22 +35,6 @@
   border-radius: 6px;
   margin-top: 20px;
   font-size: 1.1em;
-}
-
-.completedCountContainer {
-  text-align: center;
-  margin: 25px 0;
-}
-
-.completedCountText {
-  font-size: 1.2em;
-  color: #388e3c; 
-  font-weight: bold;
-  background-color: #f0f9f0; 
-  padding: 10px 15px;
-  border-radius: 20px; 
-  display: inline-block; 
-  border: 1px solid #a3d9a5;
 }
 
 .columnsContainer {
@@ -128,18 +112,17 @@
 
 .taskItemCompleted {
   border-left-color: #388e3c; 
-  background-color: #f5f5f5; /* Fundo levemente acinzentado para destacar sutilmente */
+  background-color: #f5f5f5; 
 }
 
-.taskItemContent { /* Novo: para alinhar checkbox e descrição */
+.taskItemContent { 
   display: flex;
   align-items: center;
   flex-grow: 1;
 }
 
 .taskCheckbox {
-  margin-right: 12px; /* Espaço entre checkbox e descrição */
-  /* Aumenta o tamanho do checkbox se necessário (pode requerer estilização mais complexa para cross-browser) */
+  margin-right: 12px; 
   transform: scale(1.2); 
   cursor: pointer;
 }
@@ -147,13 +130,12 @@
 .taskDescription {
   font-weight: 500; 
   color: #333;
-  transition: color 0.2s ease, text-decoration 0.2s ease; /* Para suavizar a mudança */
+  transition: color 0.2s ease, text-decoration 0.2s ease; 
 }
 
-/* Estilo para a descrição da tarefa quando concluída */
 .taskItemCompleted .taskDescription {
   text-decoration: line-through;
-  color: #aaaaaa; /* Cinza claro para o texto da tarefa concluída */
+  color: #aaaaaa; 
 }
 
 .taskStatus {

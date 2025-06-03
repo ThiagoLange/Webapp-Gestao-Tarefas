@@ -1,0 +1,48 @@
+/* src/components/PercentualConclusao.module.css */
+
+.containerProgresso {
+  text-align: center;
+  margin: 25px auto; /* Centraliza e adiciona margem vertical */
+  padding: 15px 20px;
+  background-color: #f0f9f0; /* Verde bem claro, consistente com o formulário */
+  border-radius: 8px;
+  border: 1px solid #a3d9a5; /* Borda verde média */
+  max-width: 500px; /* Limita a largura do componente de progresso */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.textoProgresso {
+  font-size: 1.4em; /* Tamanho maior para o percentual */
+  color: #2e7d32; /* Verde escuro */
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.infoTarefas {
+  font-size: 0.9em;
+  color: #388e3c; /* Verde médio */
+  margin-bottom: 15px;
+}
+
+.barraProgressoContainer {
+  width: 100%;
+  background-color: #dcedc8; /* Fundo da barra mais claro que o preenchimento */
+  border-radius: 10px;
+  height: 22px; /* Altura da barra */
+  overflow: hidden; /* Para garantir que a barra interna não ultrapasse as bordas arredondadas */
+  border: 1px solid #b2dfdb; /* Borda sutil para a barra */
+}
+
+.barraProgresso {
+  height: 100%;
+  background-color: #4CAF50; /* Verde principal para o preenchimento da barra */
+  border-radius: 8px; /* Arredondamento interno (ligeiramente menor que o container) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  transition: width 0.5s ease-in-out; /* Transição suave para a largura */
+}

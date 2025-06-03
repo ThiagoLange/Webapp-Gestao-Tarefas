@@ -1,14 +1,12 @@
 // src/components/Tarefas.jsx
 import React, { useState } from 'react';
 import NovaTarefaForm from './NovaTarefaForm';
-import styles from './Tarefas.module.css'; // Importa o CSS Module
+import PercentualConclusao from './PercentualConclusao'; // Importa o novo componente
+import styles from './Tarefas.module.css';
 
 function Tarefas() {
   const [tarefas, setTarefas] = useState([
-    // Exemplos iniciais para visualização (opcional)
-    // { id: 1, descricao: 'Café da Manhã Reforçado', periodo: 'Manhã', concluida: true },
-    // { id: 2, descricao: 'Reunião de Alinhamento', periodo: 'Manhã', concluida: false },
-    // { id: 3, descricao: 'Almoço com Cliente', periodo: 'Tarde', concluida: false },
+
   ]);
 
   const adicionarNovaTarefa = (novaTarefa) => {
@@ -41,11 +39,11 @@ function Tarefas() {
     return (
       <ul className={styles.taskListPeriod}>
         {listaTarefas.map((tarefa) => (
-          <li 
-            key={tarefa.id} 
+          <li
+            key={tarefa.id}
             className={`${styles.taskItem} ${tarefa.concluida ? styles.taskItemCompleted : ''}`}
           >
-            <div className={styles.taskItemContent}> {/* Novo wrapper para checkbox e texto */}
+            <div className={styles.taskItemContent}>
               <input
                 type="checkbox"
                 checked={tarefa.concluida}
@@ -56,7 +54,7 @@ function Tarefas() {
                 {tarefa.descricao}
               </span>
             </div>
-            <span 
+            <span
               className={`${styles.taskStatus} ${tarefa.concluida ? styles.taskStatusCompleted : styles.taskStatusPending}`}
             >
               {tarefa.concluida ? 'Concluída ✅' : 'Pendente ⏳'}
@@ -72,18 +70,19 @@ function Tarefas() {
       <h1 className={styles.mainTitle}>Gestão de Tarefas Diárias 📝</h1>
       <NovaTarefaForm onAdicionarTarefa={adicionarNovaTarefa} />
 
-      {tarefas.length > 0 && (
-        <div className={styles.completedCountContainer}>
-          <p className={styles.completedCountText}>
-            {concluidasCount} / {tarefas.length} tarefa(s) concluída(s)
-          </p>
-        </div>
+      {/* Substitui o contador anterior pelo novo componente PercentualConclusao */}
+      {tarefas.length >= 0 && ( // Sempre mostrar, mesmo que 0 tarefas, para exibir 0%
+        <PercentualConclusao
+          tarefasCompletas={concluidasCount}
+          totalTarefas={tarefas.length}
+        />
       )}
 
       <h2 className={styles.sectionTitleTarefas}>Minhas Tarefas:</h2>
-      {tarefas.length === 0 ? (
+      {tarefas.length === 0 && ! (tarefas.length > 0) ? ( // Condição ajustada para mostrar mensagem apenas se não houver tarefas
         <p className={styles.noTasksMessage}>Nenhuma tarefa adicionada ainda. Adicione uma acima! ☝️</p>
       ) : (
+        tarefas.length > 0 && // Garante que as colunas só apareçam se houver tarefas
         <div className={styles.columnsContainer}>
           <div className={styles.taskColumn}>
             <h3 className={styles.columnHeaderManha}>Manhã 🌅</h3>
